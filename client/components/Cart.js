@@ -1,11 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   getCartThunk,
   deleteItemThunk,
   changeQuantThunk
 } from '../reducers/CartReducer'
 import CartItem from './CartItem'
+import { CheckoutButton } from '../components'
 
 class Cart extends Component {
   constructor() {
@@ -27,7 +28,7 @@ class Cart extends Component {
   }
 
   render() {
-    const {cart, user} = this.props
+    const { cart, user } = this.props
     const cartSerialized = JSON.stringify(cart)
     const cartDeserialized = JSON.parse(localStorage.getItem('cart'))
     localStorage.setItem('cart', cartSerialized)
@@ -45,19 +46,19 @@ class Cart extends Component {
       <div id="container">
         <h1>Your Cart</h1>
         <br />
-        <h5>You have ordered:</h5>
-        <ul>
-          {cart.map(cartItem => (
-            <CartItem
-              key={cartItem.id}
-              cartItem={cartItem}
-              removeItem={this.removeItem}
-              changeQuant={this.changeQuant}
-              getCartThunk={this.props.getCartThunk}
-              user={user}
-            />
-          ))}
-        </ul>
+
+        {cart.map(cartItem => (
+          <CartItem
+            key={cartItem.id}
+            cartItem={cartItem}
+            removeItem={this.removeItem}
+            changeQuant={this.changeQuant}
+            getCartThunk={this.props.getCartThunk}
+            user={user}
+          />
+        ))}
+
+        <CheckoutButton />
       </div>
     )
   }
