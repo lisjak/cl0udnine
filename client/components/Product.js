@@ -11,7 +11,7 @@ class Product extends React.Component {
     const product = this.props.product
     const popover = (
       <Popover id="popover-basic" title="Added To Cart">
-        Keep breathing, Great Choice!
+        Stellar pick!
       </Popover>
     )
     return (
@@ -29,7 +29,7 @@ class Product extends React.Component {
         <OverlayTrigger trigger="click" placement="auto" overlay={popover}>
           <button
             type="button"
-            className="addBtn"
+            className="button"
             onClick={() => {
               this.props.addToCart(product)
             }}
@@ -39,7 +39,6 @@ class Product extends React.Component {
         </OverlayTrigger>
         <br />
         <br />
-        <hr />
       </div>
     )
   }

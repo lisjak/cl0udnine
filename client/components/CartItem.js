@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { logout } from '../reducers/UserReducer'
 
 const CartItem = props => {
   const product = props.cartItem.product
@@ -12,51 +13,75 @@ const CartItem = props => {
   }
 
   return (
-    <div id="cartItemDiv">
-      <div>
+
+    <div id="productgrid">
+
+
+
+      <div id="item">
+
         <Link to={`products/${product.id}`}>
-          <img src={product.imgUrl} width='100px' />
+          <img src={product.imgUrl} />
         </Link><br />
-      </div>
-      <div>
         <p>
-          <Link to={`products/${product.id}`}>{product.name}</Link>
+          <div id="productlink"><Link to={`products/${product.id}`}>{product.name}</Link></div>
         </p>
-        <div id="priceQuantDiv">
-          <div id="priceDiv">
-            <p>Price: ${cartItem.pricePerItem * cartItem.quantity}</p>
-          </div>
-          <div>
-            <p>Quantity: {quantity}</p>
-            <button
-              type="button"
-              onClick={() => {
-                props.changeQuant(cartItem.id, 'inc')
-              }}
-            >
-              +
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                props.changeQuant(cartItem.id, 'dec')
-              }}
-            >
-              -
-            </button>
-          </div>
-        </div>
-        {/*end price quant div*/}
-        <button
-          type="button"
-          onClick={() => {
-            props.removeItem(cartItem.id)
-          }}
-        >
-          Delete From Cart
-        </button>
       </div>
-    </div>
+
+
+
+
+      <div id="item">
+
+        <p><b>Item Price:</b> ${cartItem.pricePerItem}</p>
+
+        <p><b>Quantity:</b> {quantity}</p>
+
+        <p><b>Line Price:</b> ${cartItem.pricePerItem * cartItem.quantity}</p>
+
+      </div>
+
+
+      <div id="item">
+
+        <div id="buttonlist">
+          <button
+            type="button"
+            onClick={() => {
+              props.changeQuant(cartItem.id, 'inc')
+            }}
+          >
+            +
+            </button>
+
+
+
+          <button
+            type="button"
+            onClick={() => {
+              props.changeQuant(cartItem.id, 'dec')
+            }}
+          >
+            -
+            </button>
+
+
+
+          <button
+            type="button"
+            onClick={() => {
+              props.removeItem(cartItem.id)
+            }}
+          >
+            Delete From Cart
+        </button>
+        </div>
+      </div>
+
+
+
+    </div >
+
   )
 }
 

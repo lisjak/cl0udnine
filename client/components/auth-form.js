@@ -1,13 +1,13 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../reducers/UserReducer'
+import { auth } from '../reducers/UserReducer'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const { name, displayName, handleSubmit, error } = props
 
   return (
     <div id="container">
@@ -81,7 +81,7 @@ const AuthForm = props => {
             <input name="password" type="password" className="input" />
           </div>
           <div>
-            <button className="sendBtn" type="submit">
+            <button className="button" type="submit">
               {displayName}
             </button>
           </div>

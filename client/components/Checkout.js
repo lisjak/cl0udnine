@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import {getCartThunk} from '../reducers/CartReducer'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { getCartThunk } from '../reducers/CartReducer'
+import { connect } from 'react-redux'
 import CartItem from './CartItem'
 import Stripe from './Stripe'
-import {createOrderThunk} from '../reducers/OrderReducer'
-import {Link} from 'react-router-dom'
+import { createOrderThunk } from '../reducers/OrderReducer'
+import { Link } from 'react-router-dom'
 
 class Checkout extends Component {
   constructor() {
@@ -21,13 +21,13 @@ class Checkout extends Component {
   }
 
   render() {
-    const {cart} = this.props
+    const { cart } = this.props
 
     return (
       <div id="container">
-        <h1>Checkout</h1>
-        <h1>Let's Review your order!</h1>
-        <ul>
+        <center>
+          <h1>Checkout</h1>
+          <h1>Let's Review your order!</h1>
           {cart.map(cartItem => (
             <CartItem
               key={cartItem.id}
@@ -37,22 +37,24 @@ class Checkout extends Component {
               getCartThunk={this.props.getCartThunk}
             />
           ))}
-        </ul>
-        <h3>
-          Subtotal: ${this.props.cart.reduce((acc, curr) => {
-            return (acc += curr.quantity * curr.pricePerItem)
-          }, 0)}
-        </h3>
-        <Link
-          to="/orderComplete"
-          type="button"
-          onClick={() => this.placeOrder()}
-        >
-          Place Order
+          <h3>
+            Subtotal: ${this.props.cart.reduce((acc, curr) => {
+              return (acc += curr.quantity * curr.pricePerItem)
+            }, 0)}
+          </h3>
+          <div id="checkoutbutton">
+            <Stripe amount={this.props.subtotal} onSubmit={this.handleSubmit} class="button" />
+            <div class="button">
+              <Link
+                to="/orderComplete"
+                type="button"
+                onClick={() => this.placeOrder()}
+              >
+                Complete Order
         </Link>
-        <Stripe amount={this.props.subtotal} onSubmit={this.handleSubmit} />
-        <br />
-        <br />
+            </div>
+          </div>
+        </center>
       </div>
     )
   }
