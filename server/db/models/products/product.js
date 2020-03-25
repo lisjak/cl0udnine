@@ -16,21 +16,7 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
-  scent: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
-  elevation: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
-  quality: {
+  category: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
@@ -47,23 +33,9 @@ const Product = db.define('product', {
       return this.getDataValue('price') / 100
     }
   },
-  purpose: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
   imgUrl: {
     type: Sequelize.STRING,
     defaultValue: 'https://i.imgur.com/BKW61LH.jpg',
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
-  molecularComposition: {
-    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true
@@ -77,13 +49,6 @@ const Product = db.define('product', {
       min: 0
     }
   }
-  // sourceLocation: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false,
-  //   validate: {
-  //     notEmpty: true
-  //   }
-  // }
 })
 
 module.exports = Product
