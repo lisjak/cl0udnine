@@ -1,1 +1,1 @@
-Cloud Nine is an e-commerce website that offers a variety of air for all of your moods.
+Cloud Nine is a e-commerce website created for a mock client. 
