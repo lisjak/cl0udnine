@@ -10,29 +10,19 @@
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
     "deploy": "script/deploy",
-    "heroku-token": "script/encrypt-heroku-auth-token",
-    "lint": "eslint ./ --ignore-path .gitignore",
-    "lint-fix": "npm run lint -- --fix",
+    "heroku-token": "script/encrypt-heroku-auth-token.js",
+    "heroku-postbuild": "webpack -p",
     "prepare": "if [ -d .git ]; then npm-merge-driver install; fi",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
-    "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p",
-    "heroku-postbuild": "webpack -p",
+    "postinstall": "touch secrets.js",
     "seed": "node script/seed.js",
-    "start": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
+    "start": "npm run build-client-watch & npm run start-server",
+    "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
-      "npm run lint-fix",
-      "git add"
-    ],
-    "*.{css,scss,json,md}": [
-      "prettier --write",
-      "git add"
-    ]
+  "husky": {
+    "hooks": {}
   },
   "author": "Fullstack Academy of Code",
   "license": "MIT",
@@ -96,7 +86,7 @@
     "eslint-config-fullstack": "^6.0.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-react": "^7.12.4",
-    "file-loader": "^5.0.2",
+    "git-url-parse": "^11.1.2",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "mocha": "^6.1.2",

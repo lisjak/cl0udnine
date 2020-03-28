@@ -44,7 +44,7 @@ class Checkout extends Component {
           </h3>
           <div id="checkoutbutton">
             <Stripe amount={this.props.subtotal} onSubmit={this.handleSubmit} class="button" />
-            <div class="button">
+            <div className="button">
               <Link
                 to="/orderComplete"
                 type="button"

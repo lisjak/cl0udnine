@@ -72,7 +72,7 @@ class Splash extends Component {
 
                 <FadeInSection>
                     <div id="splashItemOdd">
-                        <a href="/products/1"><img src={"./assets/1.jpg"} /></a>
+                        <a href="/products/1"><img src="./assets/1.jpg" /></a>
 
                         <div id="splashItemText">
 
@@ -99,7 +99,7 @@ class Splash extends Component {
                 <FadeInSection>
                     <div id="splashItemEven">
 
-                        <a href="/products/2"><img src={"./assets/2.jpg"} /></a>
+                        <a href="/products/2"><img src="./assets/2.jpg" /></a>
 
                         <div id="splashItemText2">
 
@@ -122,7 +122,7 @@ class Splash extends Component {
                 <FadeInSection>
                     <div id="splashItemOdd">
 
-                        <a href="/products/3"><img src={"./assets/3.jpg"} /></a>
+                        <a href="/products/3"><img src="./assets/3.jpg" /></a>
 
                         <div id="splashItemText3">
 
@@ -143,7 +143,7 @@ class Splash extends Component {
                 <FadeInSection>
                     <div id="splashItemEven">
 
-                        <a href="/products/4"><img src={"./assets/4.jpg"} /></a>
+                        <a href="/products/4"><img src="./assets/4.jpg" /></a>
 
                         <div id="splashItemText4">
 
@@ -162,7 +162,7 @@ class Splash extends Component {
 
                 <FadeInSection>
                     <div id="splashItemOdd">
-                        <a href="/products/5"><img src={"./assets/5.jpg"} /></a>
+                        <a href="/products/5"><img src="./assets/5.jpg" /></a>
                         <div id="splashItemText5">
                             <LiquidDistortionText
                                 text="__Kinetic Makeup__"
