@@ -36,5 +36,13 @@ Cloud Nine features:
 * Password security (salting/hashing)
 * OAuth integration
 
+# Start
+Instructions for running in a local development environment:
+1. Fork & clone the repo
+2. `npm install`
+3. `npm run seed`
+4. `npm run start-dev`
+5. Navigate to `localhost:8080`
+
 # Previous Version
 Cloud Nine 2.0 is heavily modified from a previous version. The previous version can be [viewed live here](https://cl0udnine.herokuapp.com/). While changes were solely designed and engineered on my own, the previous version of Cloud Nine was engineered in conjuction with [a team of contributors](https://github.com/team-myrel/cl0udnine) and through the use of a boilerplate. 
