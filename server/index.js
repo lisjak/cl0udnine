@@ -37,21 +37,29 @@ passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.models.user.findByPk(id)
     done(null, user)
+     console.log(0000)
   } catch (err) {
     done(err)
+    console.log(000)
   }
 })
 
+console.log(00)
+
 const createApp = () => {
+console.log(0)
   // logging middleware
   app.use(morgan('dev'))
-
+console.log(1)
   // body parsing middleware
   app.use(express.json())
-  app.use(express.urlencoded({ extended: true }))
+  console.log(2)
 
+  app.use(express.urlencoded({ extended: true }))
+console.log(3)
   // compression middleware
   app.use(compression())
+  console.log(4)
 
   // session middleware with passport
   app.use(
@@ -62,12 +70,22 @@ const createApp = () => {
       saveUninitialized: true
     })
   )
+
+  console.log(5)
+
   app.use(passport.initialize())
+
+  console.log(6)
+
   app.use(passport.session())
+
+  console.log(7)
 
   // auth and api routes
 
   app.use('/auth', require('./auth'))
+
+  console.log(8)
 
 
 
@@ -80,10 +98,13 @@ const createApp = () => {
 
 
   app.use('/api', require('./api'))
+  console.log(9)
+
+
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
-
+console.log(10)
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
@@ -95,11 +116,13 @@ const createApp = () => {
       next()
     }
   })
+  console.log(11)
 
   // sends index.html
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
+  console.log(12)
 
   // error handling endware
   app.use((err, req, res, next) => {
@@ -107,7 +130,9 @@ const createApp = () => {
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
+  console.log(13)
 }
+
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
@@ -115,18 +140,26 @@ const startListening = () => {
     console.log(`Mixing it up on port ${PORT}`)
   )
 
+
   // set up our socket control center
+
   const io = socketio(server)
+
   require('./socket')(io)
 }
 
+
 const syncDb = () => db.sync()
+console.log(16)
 
 async function bootApp() {
-  await sessionStore.sync()
-  await syncDb()
-  await createApp()
-  await startListening()
+await sessionStore.sync()
+await console.log('a')
+await syncDb()
+await console.log('b')
+await createApp()
+await console.log('c')
+await startListening()
 }
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
@@ -134,6 +167,7 @@ async function bootApp() {
 // if we wanted to require our app in a test spec
 if (require.main === module) {
   bootApp()
-} else {
-  createApp()
+  console.log('here????')
+// } else {
+//   createApp()
 }
